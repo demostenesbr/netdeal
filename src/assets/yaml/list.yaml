@@ -1,0 +1,48 @@
+$scope.treeData  = [
+  { id: 1, name: 'Richard Paul M.', parentId: null, checked: false, children: []},
+  { id: 2, name: 'Luis F. Doris', parentId: 1, checked: false, children: []},
+  { id: 3, name: 'Maurice Rudoff Ludwig', parentId: 2, checked: false, children: []},
+  { id: 4, name: 'Joseph E. James A.', parentId: 3, checked: false, children: []},
+  { id: 5, name: 'Alan G. William', parentId: 4, checked: false, children: []},
+  { id: 6, name: 'Guglielmo Hendrik Antoon', parentId: 3, checked: false, children: []},
+  { id: 7, name: 'Wladyslaw Stanislaw Ivar', parentId: 3, checked: false, children: []},
+  { id: 8, name: 'Élie Melvin', parentId: 3, checked: false, children: []},
+  { id: 9, name: 'Alvin E. Emil Theodor', parentId: 2, checked: false, children: []},
+  { id: 10, name: 'Helke Norman E.', parentId: 2, checked: false, children: []},
+  { id: 11, name: 'Kurt Dickinson W.', parentId: 2, checked: false, children: []},
+  { id: 12, name: 'Finn E. May-Britt', parentId: 2, checked: false, children: []},
+  { id: 13, name: 'James A. Shimon', parentId: 2, checked: false, children: []},
+  ];
+
+
+
+
+
+   opened: true
+   children: [
+      name: 'Luis F. Doris'
+        opened: true
+        children: [
+        name: 'Maurice Rudoff Ludwig'
+          opened: true
+          children: [
+            name: 'Joseph E. James A.'
+              opened: true
+              children: [
+                name: 'Alan G. William'
+                ],
+            name: 'Guglielmo Hendrik Antoon',
+            name: 'Wladyslaw Stanislaw Ivar',
+            name: 'Élie Melvin',
+            name: 'Alvin E. Emil Theodor',
+            name: 'Helke Norman E.'
+          ],
+        opened: true
+        children: [
+          name: 'Kurt Dickinson W.',
+          name: 'Finn E. May-Britt',
+          name: 'James A. Shimon'
+        ],
+      ],
+    ],
+  ]
