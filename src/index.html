@@ -3,28 +3,46 @@
 <title>Angular CRUD - Netdeal</title>
 <script type="text/javascript" src="./assets/js/angular.min.js"></script>
 <script type="text/javascript" src="./assets/js/script.js"></script>
+<link rel="stylesheet" href="./assets/css/style.css" />
+
 <head>
   <meta http-equiv="Content-Type" content="text">
 </head>
 
 <body>
-  <div ng-app="treeApp" ng-controller="TreeController" class="container">
-    <h1>CRUD using AngularJS</h1>
-    <ul class="table-nested" ng-checked="(list | selected).length == list.length"
-      ng-click="toggleAllCheckboxes($event)">
-      <li ng-class='{opened: item.opened}' ng-repeat="item in treeData" ng-include="'itemTemplate'"></li>
-    </ul>
-
-    <script type="text/ng-template" id="itemTemplate">
-      <label ng-class="{parent: item.children}" ng-init="parentScope = $parent.$parent; initCheckbox(item, parentScope.item)">
-          <input type="checkbox" ng-model="item.selected" ng-change="toggleCheckbox(item, parentScope)">
-          {{ item.name }}
-      </label>
-      <ul ng-if="item.children && item.children.length > 0">
-          <li ng-class='{opened: item.opened}' ng-repeat='item in item.children' ng-include="'itemTemplate'" ng-init="level = level + 1"></li>
-          <li><a href="#">Edit</a> | <a href="#">Delete</a></li>
-      </ul>
-  </script>
-</body>
+  <div ng-app="treeApp" ng-controller="TreeController">
+    <table>
+      <caption>
+        CRUD using AngularJS
+      </caption>
+      <thead>
+        <tr>
+          <th>Selecionar</th>
+          <th class="item-name">Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td ng-checked="list" ng-click="" ng-class='' ng-repeat="item in treeData" ng-include="'itemTemplate'"></td>
+        </tr>
+        <tr>
+          <script type="text/ng-template" id="itemTemplate">
+          <td ng-class="{parent: item.children}" ng-init="parentScope = $parent.$parent; initCheckbox(item, parentScope.item)">
+              <input type="checkbox" ng-model="item.selected" ng-change="toggleCheckbox(item, parentScope)">
+              {{ item.name }}
+          </td>
+          <td ng-if="item.children && item.children.length > 0">
+              <li ng-class='{opened: item.opened}' ng-repeat='item in item.children' ng-include="'itemTemplate'" ng-init="level = level + 1">
+                {{ item.children.length }}
+              </li>
+            </td>
+          </tr>
+          </script>
+        </tr>
+      </tbody>
+    </table>
+  </body>
 </div>
+
 </html>

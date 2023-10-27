@@ -1,27 +1,12 @@
 # Netdeal
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+This project was generated with [Angular CLI](https://angularjs.org/) version 1.8.2.
 
-## Development server
+## About the project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The project works with HTML, CSS and JavaScript structure files and assets. It's a very simple hierachy checkbox tree on the page, without using of external libraries and components.
 
-## Code scaffolding
+## Inspiration and information
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The project is focused in dedicated to Netdeal Inc. present in Brazil. Please see the [link](https://netdeal.com.br/teste-pratico-frontend) below for more information.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
