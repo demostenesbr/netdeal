@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
 <title>Angular CRUD - Netdeal</title>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
-  integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
-<script src="@/assets/js/script.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
-  integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
+<script type="text/javascript" src="./assets/js/angular.min.js"></script>
+<script type="text/javascript" src="./assets/js/script.js"></script>
 <head>
   <meta http-equiv="Content-Type" content="text">
 </head>
@@ -19,7 +10,8 @@
 <body>
   <div ng-app="treeApp" ng-controller="TreeController" class="container">
     <h1>CRUD using AngularJS</h1>
-    <ul class="table-nested" ng-checked="(list | selected).length == list.length" ng-click="toggleAllCheckboxes($event)">
+    <ul class="table-nested" ng-checked="(list | selected).length == list.length"
+      ng-click="toggleAllCheckboxes($event)">
       <li ng-class='{opened: item.opened}' ng-repeat="item in treeData" ng-include="'itemTemplate'"></li>
     </ul>
 
@@ -35,100 +27,4 @@
   </script>
 </body>
 </div>
-
-<script type="text/javascript">
-
-(function() {
-  var app, list;
-
-  var app = angular.module('treeApp', []);
-  app.controller('TreeController', ['$scope', '$filter', function ($scope, $filter) {
-    
-    $scope.list = list;
-    $scope.toggleAllCheckboxes = function($event) {
-      var i, item, len, ref, results, selected;
-      selected = $event.target.checked;
-      ref = $scope.list;
-      results = [];
-      for (i = 0; i < ref.length; i++) {
-        item = ref[i];
-        item.selected = selected;
-        if (item.children != null) {
-          results.push($scope.$broadcast('changeChildren', item));
-        } else {
-          results.push(void 0);
-        }
-      }
-      return results;
-    };
-    $scope.initCheckbox = function(item, parentItem) {
-      return item.selected = parentItem && parentItem.selected || item.selected || false;
-    };
-    $scope.toggleCheckbox = function(item, parentScope) {
-      if (item.children != null) {
-        $scope.$broadcast('changeChildren', item);
-      }
-      if (parentScope.item != null) {
-        return $scope.$emit('changeParent', parentScope);
-      }
-    };
-    $scope.$on('changeChildren', function(event, parentItem) {
-      var child, i, len, ref, results;
-      ref = parentItem.children;
-      results = [];
-      for (i = 0, len = ref.length; i < len; i++) {
-        child = ref[i];
-        child.selected = parentItem.selected;
-        if (child.children != null) { 
-          results.push($scope.$broadcast('changeChildren', child));
-      } else {
-        results.push(void 0);
-      }
-    }
-    return results;
-  });
-
-  return   // Initialize your tree data (you can load it from local storage here)
-    $scope.treeData = [
-      { id: 1, name: 'Richard Paul M.', parentId: null, checked: false, children: [] },
-      { id: 2, name: 'Luis F. Doris', parentId: 1, checked: false, children: [] },
-      { id: 3, name: 'Maurice Rudoff Ludwig', parentId: 2, checked: false, children: [] },
-      { id: 4, name: 'Luis F. Doris', parentId: 3, checked: false, children: [] },
-      { id: 5, name: 'Alan G. William', parentId: 4, checked: false, children: [] },
-      { id: 6, name: 'Guglielmo Hendrik Antoon', parentId: 3, checked: false, children: [] },
-      { id: 7, name: 'Wladyslaw Stanislaw Ivar', parentId: 3, checked: false, children: [] },
-      { id: 8, name: 'Élie Melvin', parentId: 3, checked: false, children: [] },
-      { id: 9, name: 'Alvin E. Emil Theodor', parentId: 3, checked: false, children: [] },
-      { id: 10, name: 'Helke Norman E.', parentId: 3, checked: false, children: [] },
-      { id: 11, name: 'Kurt Dickinson W.', parentId: 2, checked: false, children: [] },
-      { id: 12, name: 'Finn E. May-Britt', parentId: 2, checked: false, children: [] },
-      { id: 13, name: 'James A. Shimon', parentId: 2, checked: false, children: [] },
-    ];
-
-  return $scope.$on('changeParent', function(event, parentScope) {
-        var children;
-        children = parentScope.item.children;
-        parentScope.item.selected = $filter('selected')(children).length === children.length;
-        parentScope = parentScope.$parent.$parent;
-        if (parentScope.item != null) {
-          return $scope.$broadcast('changeParent', parentScope);
-        }
-      });
-    }
-  ]);
-
-  app.filter('selected', [
-    '$filter', function($filter) {
-      return function(files) {
-        return $filter('filter')(files, {
-          selected: true
-        });
-      };
-    }
-  ]);
-
-}).call(this);
-  
-</script>
-
 </html>
